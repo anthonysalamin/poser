@@ -1,9 +1,9 @@
 ---
-title: Impressum
-slug: impressum
-updated-on: '2022-11-23T11:31:58.216Z'
+title: Imprint
+slug: imprint
+updated-on: '2022-11-30T14:09:33.042Z'
 created-on: '2022-07-27T15:39:30.481Z'
-published-on: '2022-11-23T11:32:01.783Z'
+published-on: '2022-11-30T14:10:36.253Z'
 layout: '[legal].html'
 tags: legal
 ---

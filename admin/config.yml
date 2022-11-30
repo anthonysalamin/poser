@@ -666,9 +666,9 @@ collections:
             label: Link
             name: '-230e0809'
             widget: string
-          - hint: 'Original link: /impressum, key: -2e8aead8'
+          - hint: 'Original link: /imprint, key: -7ada8706'
             label: Link
-            name: '-2e8aead8'
+            name: '-7ada8706'
             widget: string
           - hint: >-
               Original link:
