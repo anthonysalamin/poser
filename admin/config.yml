@@ -151,9 +151,9 @@ collections:
         name: date
         widget: datetime
       - *ref_0
-  - name: impressum
-    label: Impressums
-    folder: cms/impressum
+  - name: legal
+    label: Legals
+    folder: cms/legal
     create: true
     identifier_field: name
     extension: md
@@ -186,11 +186,11 @@ collections:
       - label: Tags
         widget: hidden
         name: tags
-        default: impressum
+        default: legal
       - label: Layout
         widget: hidden
         name: layout
-        default: '[impressum].html'
+        default: '[legal].html'
       - label: Publish Date
         name: date
         widget: datetime
