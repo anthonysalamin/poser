@@ -1,0 +1,771 @@
+backend:
+  name: git-gateway
+  branch: main
+  accept_roles:
+    - admin
+    - editor
+media_folder: theme/assets/images
+public_folder: /assets/images
+collections:
+  - name: pages
+    label: Pages
+    identifier_field: title
+    extension: md
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    folder: cms/pages
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '{{slug}}.html'
+      - &ref_0
+        label: Seo
+        name: seo
+        widget: object
+        collapsed: true
+        fields:
+          - label: Title
+            name: title
+            widget: string
+            required: false
+          - label: Description
+            name: description
+            widget: string
+            required: false
+          - label: No index
+            name: noindex
+            widget: boolean
+            default: false
+            required: false
+          - label: Open Graph Title
+            name: og:title
+            widget: string
+            required: false
+          - label: Open Graph Image
+            name: og:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Twitter Title
+            name: twitter:title
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Card
+            name: twitter:card
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Site
+            name: twitter:site
+            widget: string
+            required: false
+          - label: Twitter Creator
+            name: twitter:creator
+            widget: string
+            required: false
+          - label: Additional HTML tags
+            name: additional_tags
+            widget: text
+            required: false
+  - name: blog
+    label: Blogs
+    folder: cms/blog
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Blog post content (rich text)
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_publication-date
+        label: Publication date
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_thumbnail
+        label: Thumbnail
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_small-description-of-the-blog-article
+        label: Small description of the blog article
+        widget: text
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: blog
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[blog].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: impressum
+    label: Impressums
+    folder: cms/impressum
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Impressum text
+        name: body
+        widget: markdown
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: impressum
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[impressum].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: faqs
+    label: FAQs
+    folder: cms/faqs
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_answer
+        label: answer
+        widget: text
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: faqs
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[faqs].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: services
+    label: Services
+    folder: cms/services
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_thumbnail
+        label: Thumbnail
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_copy
+        label: Copy
+        widget: string
+        required: false
+      - hint: ''
+        name: f_cta
+        label: CTA copy
+        widget: string
+        required: false
+      - hint: ''
+        name: f_cta-url
+        label: CTA url
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: services
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[services].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: header_image
+    label: Images
+    folder: cms/header-image
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_image
+        label: image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_seo-alt-text
+        label: SEO alt text
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: header-image
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[header-image].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - label: Theme Settings
+    name: settings
+    identifier_field: title
+    extension: json
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    files:
+      - label: General
+        name: site
+        file: cms/_data/settings/site.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: General
+          - hint: Full domain url (needed for a correct sitemap file)
+            name: domain
+            label: Domain
+            widget: string
+            required: false
+          - name: favicon
+            label: Favicon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: apple_touch_icon
+            label: Apple Touch Icon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: header_additional_content
+            label: Additional Content Header
+            hint: Content here will be placed before </head> tag
+            widget: text
+            required: false
+          - name: footer_additional_content
+            label: Additional Content Footer
+            hint: Content here will be placed before </body> tag
+            widget: text
+            required: false
+          - name: images_optimization
+            label: Images Optimization
+            widget: object
+            collapsed: false
+            fields:
+              - label: Image Formats
+                name: formats
+                widget: select
+                multiple: true
+                options:
+                  - label: Avif
+                    value: avif
+                  - label: Webp
+                    value: webp
+              - label: Image Dimensions
+                name: dimensions
+                widget: select
+                multiple: true
+                options:
+                  - label: '500'
+                    value: 500
+                  - label: '800'
+                    value: 800
+                  - label: '1080'
+                    value: 1080
+                  - label: '1600'
+                    value: 1600
+                  - label: '2000'
+                    value: 2000
+                  - label: '2600'
+                    value: 2600
+      - label: Colors
+        name: colors
+        file: cms/_data/colors.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Colors
+      - label: Texts
+        name: texts
+        file: cms/_data/texts.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Texts
+          - hint: 'Original text: Home, key: 2268ff'
+            label: Text
+            name: 2268ff
+            widget: string
+          - hint: 'Original text: Online Hörtest, key: 7e36aa69'
+            label: Text
+            name: 7e36aa69
+            widget: string
+          - hint: 'Original text: Häufige Fragen, key: -45702d9f'
+            label: Text
+            name: '-45702d9f'
+            widget: string
+          - hint: 'Original text: Shop, key: 274f16'
+            label: Text
+            name: 274f16
+            widget: string
+          - hint: 'Original text: Neuigkeiten, key: 22435d8a'
+            label: Text
+            name: 22435d8a
+            widget: string
+          - hint: 'Original text: Kontakt, key: 43219700'
+            label: Text
+            name: '43219700'
+            widget: string
+          - hint: 'Original text: Kostenloser Hörtest, key: 36187a65'
+            label: Text
+            name: 36187a65
+            widget: string
+          - hint: 'Original text: Aktuelles, key: -29c63558'
+            label: Text
+            name: '-29c63558'
+            widget: string
+          - hint: 'Original text: Poser Hörgeräte GbR, key: -4a6027e3'
+            label: Text
+            name: '-4a6027e3'
+            widget: string
+          - hint: 'Original text: Mariendorfer Damm 77, key: 54d97183'
+            label: Text
+            name: 54d97183
+            widget: string
+          - hint: 'Original text: 12109 Berlin, key: 50de0189'
+            label: Text
+            name: 50de0189
+            widget: string
+          - hint: 'Original text: ‍, key: 200d'
+            label: Text
+            name: 200d
+            widget: string
+          - hint: 'Original text: Ubh Westphalweg U6, key: 66d6bcff'
+            label: Text
+            name: 66d6bcff
+            widget: string
+          - hint: 'Original text: 030/70604515, key: -435d8086'
+            label: Text
+            name: '-435d8086'
+            widget: string
+          - hint: 'Original text: info@poserhoergeraete.de, key: -8ceb1b7'
+            label: Text
+            name: '-8ceb1b7'
+            widget: string
+          - hint: 'Original text: einfach gut hören, key: -57870e03'
+            label: Text
+            name: '-57870e03'
+            widget: string
+          - hint: >-
+              Original text: Hörakustikmeister und Hörtherapeut Patrick Poser,
+              key: 4e9be8f3
+            label: Text
+            name: 4e9be8f3
+            widget: string
+          - hint: 'Original text: Jetzt Termin vereinbaren, key: 554b0573'
+            label: Text
+            name: 554b0573
+            widget: string
+          - hint: 'Original text: No items found., key: 3d503d2b'
+            label: Text
+            name: 3d503d2b
+            widget: string
+          - hint: 'Original text: Hörakustikmeister, key: 4735da95'
+            label: Text
+            name: 4735da95
+            widget: string
+          - hint: 'Original text: Patrick Poser, key: 72e5423'
+            label: Text
+            name: '72e5423'
+            widget: string
+          - hint: >-
+              Original text: Mein Ziel ist es, allen Kunden eine hochwertige
+              medizinische Ausrüstung und individuelle Beratung anzubieten.
+              Zudem unterstützen wir Sie bei Schlafproblemen und stressbedingtem
+              Tinnitus., key: -904f7b1
+            label: Text
+            name: '-904f7b1'
+            widget: text
+          - hint: 'Original text: Unsere Leistungen für Sie, key: -3beca02d'
+            label: Text
+            name: '-3beca02d'
+            widget: string
+          - hint: 'Original text: Sie haben Fragen ?, key: -17c6567'
+            label: Text
+            name: '-17c6567'
+            widget: string
+          - hint: 'Original text: Wir antworten., key: 51ff43e4'
+            label: Text
+            name: 51ff43e4
+            widget: string
+          - hint: 'Original text: ©2022 Poser Hörgeräte, key: 48d36f8d'
+            label: Text
+            name: 48d36f8d
+            widget: string
+          - hint: 'Original text: Design ❤️ anthonysalamin.ch, key: 552b670a'
+            label: Text
+            name: 552b670a
+            widget: string
+          - hint: 'Original text: Impressum, key: 6f6b7057'
+            label: Text
+            name: 6f6b7057
+            widget: string
+          - hint: 'Original text: Password, key: 4c641ebb'
+            label: Text
+            name: 4c641ebb
+            widget: string
+          - hint: >-
+              Original text: Incorrect password. Please try again., key:
+              -f5c4b5f
+            label: Text
+            name: '-f5c4b5f'
+            widget: string
+          - hint: 'Original text: coming soon, key: -568ea4c6'
+            label: Text
+            name: '-568ea4c6'
+            widget: string
+          - hint: 'Original text: Zurück zu Aktuelles, key: 2a5296b6'
+            label: Text
+            name: 2a5296b6
+            widget: string
+      - label: Links
+        name: links
+        file: cms/_data/links.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Links
+          - hint: 'Original link: /, key: 2f'
+            label: Link
+            name: 2f
+            widget: string
+          - hint: >-
+              Original link:
+              https://hearing-screener.beyondhearing.org/poserhoergeraete/HMIaL1/welcome,
+              key: 195e1b6f
+            label: Link
+            name: 195e1b6f
+            widget: string
+          - hint: 'Original link: #faqs, key: 21d0ec0'
+            label: Link
+            name: 21d0ec0
+            widget: string
+          - hint: 'Original link: /coming-soon, key: 13c5e938'
+            label: Link
+            name: 13c5e938
+            widget: string
+          - hint: 'Original link: /aktuelles, key: 38436f79'
+            label: Link
+            name: 38436f79
+            widget: string
+          - hint: 'Original link: https://poserhoergeraete.de/#faqs, key: -18e53b63'
+            label: Link
+            name: '-18e53b63'
+            widget: string
+          - hint: 'Original link: #, key: 23'
+            label: Link
+            name: '23'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.google.de/maps/place/Mariendorfer+Damm+77,+12109+Berlin,+Germany/@52.4457932,13.3838757,17z/data=!3m1!4b1!4m5!3m4!1s0x47a8454565e115b3:0x66e6407409522b0e!8m2!3d52.44579!4d13.3860644,
+              key: 2e562e44
+            label: Link
+            name: 2e562e44
+            widget: string
+          - hint: 'Original link: tel:03070604515, key: 2f390ee6'
+            label: Link
+            name: 2f390ee6
+            widget: string
+          - hint: >-
+              Original link: mailto:info@poserhoergeraete.de?subject=Kontakt,
+              key: 1f0a0b81
+            label: Link
+            name: 1f0a0b81
+            widget: string
+          - hint: 'Original link: /termin, key: -7e043880'
+            label: Link
+            name: '-7e043880'
+            widget: string
+          - hint: >-
+              Original link: mailto:info@poserhoergeraete.de?subject=Hallo, key:
+              -230e0809
+            label: Link
+            name: '-230e0809'
+            widget: string
+          - hint: 'Original link: /impressum, key: -2e8aead8'
+            label: Link
+            name: '-2e8aead8'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.instagram.com/poser_hoergeraete_berlin/, key: 17c50ff5
+            label: Link
+            name: 17c50ff5
+            widget: string
+          - hint: >-
+              Original link: https://www.tiktok.com/@patrickposer1, key:
+              5061d64e
+            label: Link
+            name: 5061d64e
+            widget: string
+      - label: Images
+        name: images
+        file: cms/_data/images.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Images
+          - label: Image
+            name: '-4b96f42f'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-7a88a2c6'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-5684a531'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-4fa3fa0f'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-190739ed'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-4a07749b'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+publish_mode: editorial_workflow
