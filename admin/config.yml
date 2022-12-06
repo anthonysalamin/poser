@@ -671,6 +671,12 @@ collections:
             name: '-7ada8706'
             widget: string
           - hint: >-
+              Original link: https://www.facebook.com/PoserHoergeraete, key:
+              -7488b63c
+            label: Link
+            name: '-7488b63c'
+            widget: string
+          - hint: >-
               Original link:
               https://www.instagram.com/poser_hoergeraete_berlin/, key: 17c50ff5
             label: Link
