@@ -101,15 +101,12 @@ textarea:focus
  * last build: 24/11/2022 19:34
 */
 document.addEventListener("DOMContentLoaded", () => {
-  // 👻 getting shadow root
   const udeslyBanner = document.getElementsByTagName("udesly-banner")[0];
   if (!udeslyBanner) return;
   const udeslyShadowRoot = udeslyBanner.shadowRoot;
-  // 👻 hacking shadow root styles
   const style = document.createElement("style");
   style.innerText = `:host { left: -100% !important; }`;
   udeslyShadowRoot.appendChild(style);
-  // console.log(udeslyShadowRoot);
 });
 </script>
   <!--  lenis API  -->
@@ -120,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
  * last update 30.10.22 @18:04
  */
 document.addEventListener("DOMContentLoaded", () => {
-  handleScrolling();
+  // handleScrolling(); // 🔴 doesn't work on netlify
 });
 function handleScrolling() {
   // helper easing functions || info: easings.net
