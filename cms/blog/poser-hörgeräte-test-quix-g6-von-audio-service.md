@@ -11,6 +11,7 @@ seo:
   noindex: false
   twitter:title: summary
   twitter:card: summary
+  og:image: /assets/images/img_0904.jpg
 ---
 <!--\\[if gte mso 9]><xml>
  <w:WordDocument>
