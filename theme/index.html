@@ -146,7 +146,7 @@ textarea:focus
           {%- unless collection.length == 0 -%}<div role="list" class="w-dyn-items w-row">
             {%- for item in collection -%}<div role="listitem" class="faq-collection-item w-dyn-item w-col w-col-4">
               <a href="{{ item.data.f_cta-url }}" class="service_link w-inline-block">
-                <div class="img-container"><img loading="lazy" data-sizes="[{&quot;max&quot;:10000,&quot;size&quot;:&quot;100vw&quot;}]" src="{{ item.data.f_thumbnail.url }}" alt="{{ item.data.title }}" class="img"></div>
+                <div class="img-container"><img loading="lazy" data-sizes="[{&quot;max&quot;:767,&quot;size&quot;:&quot;80vw&quot;},{&quot;max&quot;:10000,&quot;size&quot;:&quot;26vw&quot;}]" src="{{ item.data.f_thumbnail.url }}" alt="{{ item.data.title }}" class="img"></div>
                 <h4>{{ item.data.title }}</h4>
                 <p>{{ item.data.f_copy }}</p>
               </a>
@@ -519,4 +519,4 @@ const contentString =
   <!--  Google Maps  -->
   <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBE2X5d-yl6c3TiyumMqOFDr60idwRI9Vo&amp;language=de&amp;region=de&amp;callback=initMap"></script>
 
-<script src="/assets/js/udesly-11ty.min.js" async="" defer=""></script>{{ settings.site.footer_additional_content }}<script>window.netlifyIdentity&&window.netlifyIdentity.on("init",a=>{a||window.netlifyIdentity.on("login",()=>{document.location.href="/admin/"})});</script><script type="module">import*as UdeslyBanner from"https://cdn.jsdelivr.net/npm/udesly-ad-banner@0.0.1/loader/index.js";UdeslyBanner.defineCustomElements(),document.body.append(document.createElement("udesly-banner"));</script></body></html>
+<script src="/assets/js/udesly-11ty.min.js" async="" defer=""></script>{{ settings.site.footer_additional_content }}<script>window.netlifyIdentity&&window.netlifyIdentity.on("init",a=>{a||window.netlifyIdentity.on("login",()=>{document.location.href="/admin/"})});</script></body></html>
